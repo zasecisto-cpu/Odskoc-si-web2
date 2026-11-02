@@ -1,5 +1,11 @@
 export const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbzY-toW2APm9wSReLrNGAHWzvl7aG8S74TFm8987IQDfwMDUPrNn87rYXHNUhYYKQLt/exec';
 
+export type FormType = 'business_preregistration' | 'city_inquiry' | 'hlaseni';
+
+export interface FormSubmissionData extends Record<string, unknown> {
+  formType: FormType;
+}
+
 export async function submitToGoogleSheet(data: Record<string, unknown>): Promise<boolean> {
   try {
     await fetch(WEBHOOK_URL, {

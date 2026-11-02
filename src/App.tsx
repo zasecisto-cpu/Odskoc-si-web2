@@ -19,9 +19,16 @@ export default function App() {
     }
   }, []);
 
-  // Handle URL hash on load
+  // Handle URL pathname or hash on load
   useEffect(() => {
-    const handleUrlHash = () => {
+    const handleUrlRoute = () => {
+      const pathname = window.location.pathname.replace(/\/+$/, '');
+      if (pathname === '/hlaseni') {
+        setTimeout(() => {
+          scrollToSection('hlaseni');
+        }, 150);
+        return;
+      }
       const hash = window.location.hash.replace('#', '');
       if (hash) {
         setTimeout(() => {
@@ -30,9 +37,13 @@ export default function App() {
       }
     };
 
-    handleUrlHash();
-    window.addEventListener('hashchange', handleUrlHash);
-    return () => window.removeEventListener('hashchange', handleUrlHash);
+    handleUrlRoute();
+    window.addEventListener('hashchange', handleUrlRoute);
+    window.addEventListener('popstate', handleUrlRoute);
+    return () => {
+      window.removeEventListener('hashchange', handleUrlRoute);
+      window.removeEventListener('popstate', handleUrlRoute);
+    };
   }, [scrollToSection]);
 
   return (

@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MistaSection } from './MistaSection';
 import { TipFormSection } from './TipFormSection';
+import { HlaseniSection } from './HlaseniSection';
 import { StickerSection } from './StickerSection';
 import { PrivacyModal } from './PrivacyModal';
 import Logo from './Logo';
@@ -29,6 +30,16 @@ interface LandingPageProps {
 export const LandingPage: React.FC<LandingPageProps> = ({ onScrollToSection }) => {
   // Modal & form states
   const [privacyOpen, setPrivacyOpen] = useState(false);
+
+  // Auto-scroll to hlaseni if pathname is /hlaseni
+  useEffect(() => {
+    const pathname = window.location.pathname.replace(/\/+$/, '');
+    if (pathname === '/hlaseni') {
+      setTimeout(() => {
+        onScrollToSection('hlaseni');
+      }, 250);
+    }
+  }, [onScrollToSection]);
 
   // Business form state
   const [businessSubmitted, setBusinessSubmitted] = useState(false);
@@ -984,7 +995,12 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onScrollToSection }) =
       </section>
 
       {/* ========================================================= */}
-      {/* 7. FOOTER                                                 */}
+      {/* 7. HLÁŠENÍ Z WC – DEJTE NÁM VĚDĚT                         */}
+      {/* ========================================================= */}
+      <HlaseniSection />
+
+      {/* ========================================================= */}
+      {/* 8. FOOTER                                                 */}
       {/* ========================================================= */}
       <footer className="bg-[#14294B] text-white py-14 px-5 sm:px-8 border-t-2 border-[#1E3A67] select-none text-left">
         <div className="max-w-6xl mx-auto space-y-10">
