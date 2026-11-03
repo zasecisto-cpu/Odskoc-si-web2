@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { API_URL } from '../config';
+import { submitToGoogleSheet } from '../config/webhook';
 import { MapPin, CheckCircle2, AlertCircle, Send } from 'lucide-react';
 
 interface TipFormSectionProps {
@@ -93,26 +93,25 @@ export const TipFormSection: React.FC<TipFormSectionProps> = ({ onOpenPrivacyMod
     }
 
     try {
-      await fetch(API_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: {
-          'Content-Type': 'text/plain;charset=utf-8',
-        },
-        body: JSON.stringify({
-          typ: 'tip',
-          mesto: formMesto.trim(),
-          nazev: formNazev.trim(),
-          adresa: formAdresa.trim(),
-          lat: finalLat,
-          lng: finalLng,
-          poznamka: formPoznamka.trim(),
-          email: formEmail.trim(),
-        }),
+      const ok = await submitToGoogleSheet({
+        formType: 'tip',
+        mesto: formMesto.trim(),
+        nazev: formNazev.trim(),
+        adresa: formAdresa.trim(),
+        lat: finalLat,
+        lng: finalLng,
+        poznamka: formPoznamka.trim(),
+        email: formEmail.trim(),
+        consent: formConsent,
+        submittedAt: new Date().toISOString(),
       });
 
-      setSuccessMessage('Díky! Váš tip jsme zaznamenali.');
-      clearForm();
+      if (ok) {
+        setSuccessMessage('Díky! Váš tip jsme zaznamenali.');
+        clearForm();
+      } else {
+        setErrorMessage('Omlouváme se, došlo k\u00A0chybě při odesílání. Zkuste to prosím znovu.');
+      }
     } catch (err) {
       console.error('Chyba při odesílání tipu:', err);
       setErrorMessage('Omlouváme se, došlo k\u00A0chybě při odesílání. Zkuste to prosím znovu.');

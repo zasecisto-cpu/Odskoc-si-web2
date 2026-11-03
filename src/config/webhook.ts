@@ -1,6 +1,6 @@
 export const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbzY-toW2APm9wSReLrNGAHWzvl7aG8S74TFm8987IQDfwMDUPrNn87rYXHNUhYYKQLt/exec';
 
-export type FormType = 'business_preregistration' | 'city_inquiry' | 'hlaseni';
+export type FormType = 'business_preregistration' | 'city_inquiry' | 'hlaseni' | 'tip';
 
 export interface FormSubmissionData extends Record<string, unknown> {
   formType: FormType;
