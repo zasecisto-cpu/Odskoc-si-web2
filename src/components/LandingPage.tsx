@@ -336,14 +336,14 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onScrollToSection }) =
               </li>
             </ul>
 
-            {/* Ukázka označení provozovny: /images/odskocsi-dvere.jpg */}
+            {/* Ukázka označení provozovny: /odskocsi-dvere.jpg */}
             <div className="pt-2">
               <div className="text-xs font-['Archivo',sans-serif] font-[900] text-slate-600 uppercase tracking-wider mb-2">
                 Ukázka označení provozovny:
               </div>
               <img
-                src="/images/odskocsi-dvere.jpg"
-                alt="Vstupní dveře kavárny s nálepkou Odskoč si vedle otevírací doby"
+                src="/odskocsi-dvere.jpg"
+                alt="Vstupní dveře kavárny s nálepkou Odskoč si"
                 loading="lazy"
                 className="w-full max-w-[360px] aspect-[4/5] object-cover rounded-[12px] shadow-lg border border-slate-200 block"
               />

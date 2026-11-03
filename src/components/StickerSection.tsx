@@ -8,7 +8,7 @@ export const StickerSection: React.FC = () => {
         <div className="md:col-span-5 flex justify-center md:justify-start">
           <div className="relative transform -rotate-2 hover:rotate-0 transition-transform duration-300 w-full max-w-[360px]">
             <img
-              src="/images/odskocsi-nalepka.png"
+              src="/odskocsi-nalepka.png"
               alt="Nálepka Odskoč si na dveřích: WC zdarma, bez nákupu"
               className="w-full max-w-[360px] drop-shadow-md block"
             />
