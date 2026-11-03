@@ -336,19 +336,17 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onScrollToSection }) =
               </li>
             </ul>
 
-            {/* Ukázka nálepky v sekci pro podniky: /odskoc-si-nalepka.webp (fallback .png), max. šířka 360 px */}
+            {/* Ukázka označení provozovny: /images/odskocsi-dvere.jpg */}
             <div className="pt-2">
               <div className="text-xs font-['Archivo',sans-serif] font-[900] text-slate-600 uppercase tracking-wider mb-2">
                 Ukázka označení provozovny:
               </div>
-              <picture className="block">
-                <source srcSet="/odskoc-si-nalepka.webp" type="image/webp" />
-                <img
-                  src="/odskoc-si-nalepka.png"
-                  alt="Ukázka nálepky Odskoč si na dveřích provozovny"
-                  className="w-full max-w-[360px] rounded-[12px] shadow-lg border border-slate-200 block"
-                />
-              </picture>
+              <img
+                src="/images/odskocsi-dvere.jpg"
+                alt="Vstupní dveře kavárny s nálepkou Odskoč si vedle otevírací doby"
+                loading="lazy"
+                className="w-full max-w-[360px] aspect-[4/5] object-cover rounded-[12px] shadow-lg border border-slate-200 block"
+              />
             </div>
 
             {/* Samostatný zvýrazněný box „Vaše pravidla platí“ */}
