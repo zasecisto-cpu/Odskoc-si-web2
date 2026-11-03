@@ -81,19 +81,15 @@ export const HlaseniSection: React.FC = () => {
                   <label htmlFor="hlaseni-mesto" className="block text-xs font-bold text-slate-800 uppercase mb-1">
                     Město *
                   </label>
-                  <select
+                  <input
                     id="hlaseni-mesto"
                     required
+                    type="text"
                     value={mesto}
                     onChange={(e) => setMesto(e.target.value)}
+                    placeholder="např. Český Těšín"
                     className="w-full h-11 px-3 text-sm bg-white border border-slate-300 rounded-[4px] focus:border-[#14294B] focus:outline-none"
-                  >
-                    <option value="" disabled>Vyberte město</option>
-                    <option value="Český Těšín">Český Těšín</option>
-                    <option value="Karviná">Karviná</option>
-                    <option value="Třinec">Třinec</option>
-                    <option value="Jiné">Jiné</option>
-                  </select>
+                  />
                 </div>
 
                 {/* Podnik */}
